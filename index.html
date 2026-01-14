@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traffic Light</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+
+        .traffic-light {
+            width: 100px;
+            height: 250px;
+            background-color: #333;
+            border-radius: 10px;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .light {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            opacity: 0.3; 
+            transition: opacity 0.5s; 
+        }
+
+        .red {
+            background-color: rgb(242, 11, 11);
+        }
+        .yellow {
+            background-color: rgb(252, 252, 5);
+        }
+        .green {
+            background-color: rgb(11, 245, 11);
+        }
+    </style>
+</head>
+<body>
+    <div class="traffic-light"> 
+        <div class="light red"></div>
+        <div class="light yellow"></div>
+        <div class="light green"></div>
+    </div>
+
+    <script>
+        const time_red = 3000;    
+        const time_yellow = 2000;  
+        const time_green = 3000;   
+
+       const changeLight = () => {
+            const trafficLight = document.querySelector('.traffic-light');
+            const red = document.querySelector('.red');
+            const yellow = document.querySelector('.yellow');
+            const green = document.querySelector('.green');
+
+            red.style.opacity = '0.3';
+            yellow.style.opacity = '0.3';
+            green.style.opacity = '0.3';
+
+            setTimeout(() => {
+                red.style.opacity = '1';
+                yellow.style.opacity = '0.3';
+                green.style.opacity = '0.3';
+            }, time_red);
+
+            setTimeout(() => {
+                red.style.opacity = '0.3';
+                yellow.style.opacity = '1';
+                green.style.opacity = '0.3';
+            }, time_red + time_yellow);
+
+            setTimeout(() => {
+                red.style.opacity = '0.3';
+                yellow.style.opacity = '0.3';
+                green.style.opacity = '1';
+            }, time_red + time_yellow + time_green);
+        }
+        changeLight();
+    </script>
+</body>
+</html>
